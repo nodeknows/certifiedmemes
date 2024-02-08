@@ -6,7 +6,6 @@ var len = document.getElementById('len');
 var canvas = document.getElementById('canvas')
 var ctx = canvas.getContext('2d');
 
-const date = new Date();
 
 // stop page from refreshing
 form.addEventListener('submit', function (e) { e.preventDefault() })
@@ -38,8 +37,9 @@ form.onsubmit = function (e) {
     ctx.textAlign = 'center';
     ctx.fillText(`${firstname.value} ${lastname.value}`, canvas.width / 2, canvas.height / 2 + 185);
 
+    let theDate = new Date().toLocaleDateString('en-us', {weekday:'long', year:'numeric', month:'short'})
     ctx.font = '7rem barcode';
-    ctx.fillText(date.getUTCMonth() + "/" + date.getUTCDate() + "/" + date.getUTCFullYear(), canvas.width / 2 - 325, canvas.height - 190);
+    ctx.fillText(theDate, canvas.width / 2 - 240, canvas.height - 190);
 
 }
 
