@@ -39,7 +39,7 @@ form.onsubmit = function (e) {
     ctx.fillText(`${firstname.value} ${lastname.value}`, canvas.width / 2, canvas.height / 2 + 185);
 
     ctx.font = '7rem barcode';
-    ctx.fillText(date.getUTCMonth() + "/" + date.getUTCDate() + "/" + date.getUTCFullYear(), canvas.width / 2 - 325, canvas.height - 200);
+    ctx.fillText(date.getUTCMonth() + "/" + date.getUTCDate() + "/" + date.getUTCFullYear(), canvas.width / 2 - 325, canvas.height - 190);
 
 }
 
