@@ -22,7 +22,7 @@ form.onsubmit = function (e) {
         t = 'far';
     }
     
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // clears canvas everytime submit is pressed; but not necessary
 
     img = document.createElement('img');
     img.src = `/templates/${lang.value}_${t}.webp`;
