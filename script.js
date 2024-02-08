@@ -5,6 +5,7 @@ var form = document.getElementsByTagName('form')[0]
 var submit = document.getElementById('submit');
 var firstname = document.getElementById('firstname'), lastname = document.getElementById('lastname');
 var lang = document.getElementById('lang');
+var len = document.getElementById('len');
 
 var canvas = document.getElementById('canvas')
 var ctx = canvas.getContext('2d');
@@ -19,7 +20,15 @@ form.onsubmit = function (e) {
     //console.log(firstname.value, lastname.value)
     let f = firstname.value, l = lastname.value;
     let t;
-    if ((f.length + l.length) > 11) { t = 'far' } else { t = 'close' };
+    
+    if (len.value ===  'Auto') {
+        if ((f.length + l.length) > 11) { t = 'far' } else { t = 'close' };
+    } else if (len.value === 'Close') {
+        t = 'close';
+    } else if (len.value === 'Far') {
+        t = 'far';
+    }
+    
 
     if (img) {
         img.remove();
@@ -43,10 +52,10 @@ form.onsubmit = function (e) {
 
     ctx.font = '9rem inknut';
     ctx.textAlign = 'center';
-    ctx.fillText(`${f} ${l}`, canvas.width/2, canvas.height/2+185);
-    
+    ctx.fillText(`${f} ${l}`, canvas.width / 2, canvas.height / 2 + 185);
+
     ctx.font = '7rem barcode';
-    ctx.fillText(date.getUTCMonth()+"/"+date.getUTCDate()+"/"+date.getUTCFullYear(), canvas.width/2-325, canvas.height-200);
+    ctx.fillText(date.getUTCMonth() + "/" + date.getUTCDate() + "/" + date.getUTCFullYear(), canvas.width / 2 - 325, canvas.height - 200);
 
     /* 
     img = document.createElement('img');
@@ -72,4 +81,24 @@ form.onsubmit = function (e) {
     if (lang.value !== 'JS') nametext.style.color = 'white';
     */
 
+}
+
+function printCanvas() {
+
+
+    // Get URL beforehand to reduce delay between write and print
+    // (probably unnecessary but just being on the safe side)
+    let url = canvas.toDataURL();
+
+    // New tab to isolate canvas for printing
+    let win = window.open();
+
+    // 'img' element will show url as image
+    win.document.write("<img src='" + url + "' style=\"width: 100%; height: 100%\"/>");
+
+    // Print preview shows empty page... almost as if to be called before write
+    //win.print();
+
+    // Magically seems to cause print to be called after write
+    win.setTimeout(() => win.print(), 0);
 }
