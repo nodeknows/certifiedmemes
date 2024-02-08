@@ -1,8 +1,4 @@
-// 9 characters including a space is enough for a close,
-// otherwise, up to 16 including a space for everything else.
-
 var form = document.getElementsByTagName('form')[0]
-var submit = document.getElementById('submit');
 var firstname = document.getElementById('firstname'), lastname = document.getElementById('lastname');
 var lang = document.getElementById('lang');
 var len = document.getElementById('len');
