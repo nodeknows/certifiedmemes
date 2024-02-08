@@ -17,7 +17,6 @@ const date = new Date();
 form.addEventListener('submit', function (e) { e.preventDefault() })
 
 form.onsubmit = function (e) {
-    //console.log(firstname.value, lastname.value)
     let f = firstname.value, l = lastname.value;
     let t;
 
@@ -56,30 +55,6 @@ form.onsubmit = function (e) {
 
     ctx.font = '7rem barcode';
     ctx.fillText(date.getUTCMonth() + "/" + date.getUTCDate() + "/" + date.getUTCFullYear(), canvas.width / 2 - 325, canvas.height - 200);
-
-    /* 
-    img = document.createElement('img');
-    document.body.appendChild(img);
-    
-    img.src = `/templates/${lang.value}_${t}.webp`;
-    img.style.width = "100%";
-    img.style.height = "100%";
-    img.style.marginTop = "2vh";
-
-    nametext = document.createElement('h1');
-    document.body.appendChild(nametext);
-    
-    nametext.innerHTML = `${f} ${l}`
-    nametext.style.position = 'absolute';
-    nametext.style.color = 'black';
-    nametext.style.top = '49%';
-    nametext.style.textAlign = 'center';
-    nametext.style.width = '100%';
-    nametext.style.fontFamily = 'inknut';
-    nametext.style.fontSize = '3rem';
-
-    if (lang.value !== 'JS') nametext.style.color = 'white';
-    */
 
 }
 
