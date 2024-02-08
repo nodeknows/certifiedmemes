@@ -5,7 +5,6 @@ var len = document.getElementById('len');
 
 var canvas = document.getElementById('canvas')
 var ctx = canvas.getContext('2d');
-var img, nametext;
 
 const date = new Date();
 
@@ -13,27 +12,17 @@ const date = new Date();
 form.addEventListener('submit', function (e) { e.preventDefault() })
 
 form.onsubmit = function (e) {
-    let f = firstname.value, l = lastname.value;
     let t;
 
     if (len.value ===  'Auto') {
-        if ((f.length + l.length) > 11) { t = 'far' } else { t = 'close' };
+        if ((firstname.value.length + lastname.value.length) > 11) { t = 'far' } else { t = 'close' };
     } else if (len.value === 'Close') {
         t = 'close';
     } else if (len.value === 'Far') {
         t = 'far';
     }
     
-
-    if (img) {
-        img.remove();
-        img = undefined;
-    }
-
-    if (nametext) {
-        nametext.remove();
-        nametext = undefined;
-    }
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     img = document.createElement('img');
     img.src = `/templates/${lang.value}_${t}.webp`;
@@ -47,7 +36,7 @@ form.onsubmit = function (e) {
 
     ctx.font = '9rem inknut';
     ctx.textAlign = 'center';
-    ctx.fillText(`${f} ${l}`, canvas.width / 2, canvas.height / 2 + 185);
+    ctx.fillText(`${firstname.value} ${lastname.value}`, canvas.width / 2, canvas.height / 2 + 185);
 
     ctx.font = '7rem barcode';
     ctx.fillText(date.getUTCMonth() + "/" + date.getUTCDate() + "/" + date.getUTCFullYear(), canvas.width / 2 - 325, canvas.height - 200);
