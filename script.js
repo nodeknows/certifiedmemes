@@ -20,7 +20,7 @@ form.onsubmit = function (e) {
     //console.log(firstname.value, lastname.value)
     let f = firstname.value, l = lastname.value;
     let t;
-    
+
     if (len.value ===  'Auto') {
         if ((f.length + l.length) > 11) { t = 'far' } else { t = 'close' };
     } else if (len.value === 'Close') {
@@ -84,21 +84,8 @@ form.onsubmit = function (e) {
 }
 
 function printCanvas() {
-
-
-    // Get URL beforehand to reduce delay between write and print
-    // (probably unnecessary but just being on the safe side)
     let url = canvas.toDataURL();
-
-    // New tab to isolate canvas for printing
     let win = window.open();
-
-    // 'img' element will show url as image
     win.document.write("<img src='" + url + "' style=\"width: 100%; height: 100%\"/>");
-
-    // Print preview shows empty page... almost as if to be called before write
-    //win.print();
-
-    // Magically seems to cause print to be called after write
-    win.setTimeout(() => win.print(), 0);
+    setTimeout(() => win.print(), 0); // write first, then print
 }
