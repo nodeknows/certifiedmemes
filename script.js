@@ -37,9 +37,9 @@ form.onsubmit = function (e) {
     ctx.textAlign = 'center';
     ctx.fillText(`${firstname.value} ${lastname.value}`, canvas.width / 2, canvas.height / 2 + 185);
 
-    let theDate = new Date().toLocaleDateString('en-us', {weekday:'long', year:'numeric', month:'short'})
+    let theDate = new Date().toLocaleDateString('en-us', {day:'numeric', year:'numeric', month:'numeric'})
     ctx.font = '7rem barcode';
-    ctx.fillText(theDate, canvas.width / 2 - 240, canvas.height - 190);
+    ctx.fillText(theDate, canvas.width / 2 - 325, canvas.height - 190);
 
 }
 
